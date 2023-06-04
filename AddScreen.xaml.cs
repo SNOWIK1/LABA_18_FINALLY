@@ -27,7 +27,21 @@ namespace FINALLY_18_LABA
 
         private void add_game(object sender, RoutedEventArgs e)
         {
+            if (title.Text == "" || desc.Text == "")
+            {
+                MessageBox.Show("All fields must be filled", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                ListOfGames.AddGame(new Game { Title = title.Text, Description = desc.Text });
+                title.Text = "";
+                desc.Text = "";
+            }
+        }
 
+        private void go_back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Main());
         }
     }
 }

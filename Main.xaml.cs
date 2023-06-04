@@ -20,16 +20,44 @@ namespace FINALLY_18_LABA
     /// </summary>
     public partial class Main : Page
     {
+        List<Game> source = ListOfGames.GetGames();
+        List<string> titles = new List<string>();
         public Main()
         {
+            foreach (Game game in source)
+            {
+                titles.Add(game.Title);
+            }
             InitializeComponent();
-            string[] source = { "Left 4 Dead", "Fallout: New Vegas", "The Elder Scrolls IV: Oblivion", "Call of Duty Modern Warfare", "The Forest", "S.T.A.L.K.E.R. Тень Чернобыля" };
-            navigation.ItemsSource = source;
+            navigation.ItemsSource = titles;
         }
 
         private void selected(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Module(navigation.SelectedItem.ToString()));
+            foreach (Game game in source)
+            { 
+                if (navigation.SelectedItem.ToString() == game.Title)
+                {
+                    selected_title.Text = game.Title;
+                    selected_genre.Text = 
+                    selected_description.Text = game.Description;
+                }
+            }
+        }
+
+        private void add_game(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddScreen());
+        }
+
+        private void exit (object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void about_page(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Module());
         }
     }
 }

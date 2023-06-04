@@ -9,12 +9,39 @@
       Title="Main">
 
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" x:Name="navigation" SelectionChanged="selected"/>
-        <Button Grid.Column="1" Content="Add new game" Padding="5" FontSize="14"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Menu Background="AliceBlue" Grid.Row="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Menu">
+                <MenuItem Header="Store">
+                    <MenuItem Header="Add new game" Click="add_game"/>
+                    <MenuItem Header="Your profile"/>
+                    <MenuItem Header="Exit" Click="exit"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="about_page"/>
+            </MenuItem>
+        </Menu>
+
+        <ListView Grid.Column="0" Grid.Row="1" x:Name="navigation" SelectionChanged="selected"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            
+            <TextBlock x:Name="selected_title" Style="{StaticResource txt_block_style}" VerticalAlignment="Center"/>
+            <TextBlock x:Name="selected_genre" Style="{StaticResource txt_block_style}" VerticalAlignment="Center"/>
+            <TextBlock x:Name="selected_description" Style="{StaticResource txt_block_style}" VerticalAlignment="Center"/>
+
+        </StackPanel>
+
     </Grid>
 </Page>

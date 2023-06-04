@@ -5,14 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FINALLY_18_LABA"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Module">
+      WindowHeight="200" WindowWidth="300"
+      Title="About">
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock x:Name="lbl" TextWrapping="Wrap"/>
-            <TextBlock x:Name="desc" TextWrapping="Wrap"/>
-            <Button Content="Go back" Click="go_back"/>
+            <TextBlock TextWrapping="Wrap">
+                We are glad to see you in our app store! We hope you're enjoying
+                available games!
+            </TextBlock>
+            <Button Content="Go back" Click="go_back" Style="{StaticResource btn_style}"/>
         </StackPanel>
     </Grid>
 </Page>

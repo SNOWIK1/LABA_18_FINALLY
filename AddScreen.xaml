@@ -14,7 +14,8 @@
             <TextBox x:Name="title"/>
             <Label Content="Description: "/>
             <TextBox x:Name="desc"/>
-            <Button Content="Add game" Click="add_game"/>
+            <Button Content="Add game" Click="add_game" Style="{StaticResource btn_style}"/>
+            <Button Content="Go back" Click="go_back" Style="{StaticResource btn_style}"/>
         </StackPanel>
     </Grid>
 </Page>
