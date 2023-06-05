@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +20,9 @@ namespace FINALLY_18_LABA
     /// </summary>
     public partial class Main : Page
     {
-        List<Game> source = ListOfGames.GetGames();
-        List<string> titles = new List<string>();
+        bool isEditor = false;
+        private List<Game> source = ListOfGames.GetGames();
+        private List<string> titles = new List<string>();
         public Main()
         {
             foreach (Game game in source)
@@ -39,15 +40,35 @@ namespace FINALLY_18_LABA
                 if (navigation.SelectedItem.ToString() == game.Title)
                 {
                     selected_title.Text = game.Title;
-                    selected_genre.Text = 
+                    selected_price.Text = game.Price;
                     selected_description.Text = game.Description;
                 }
             }
         }
 
+
+        private void editor_on(object sender, RoutedEventArgs e)
+        {
+            isEditor = !isEditor;
+            if (isEditor)
+            {
+                MenuItem item = new MenuItem();
+                item.Header = "Store";
+                MenuItem item2 = new MenuItem();
+                item2.Header = "Add new game";
+                item2.Click += add_game;
+                item.Items.Add(item2);
+                menu_main.Items.Add(item);
+            }
+            else
+            {
+                menu_main.Items.Remove("Store");
+            }
+        }
+
         private void add_game(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddScreen());
+                NavigationService.Navigate(new AddScreen());
         }
 
         private void exit (object sender, RoutedEventArgs e)
@@ -61,3 +82,4 @@ namespace FINALLY_18_LABA
         }
     }
 }
+
