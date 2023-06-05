@@ -1,4 +1,4 @@
-﻿<Page x:Class="FINALLY_18_LABA.Main"
+<Page x:Class="FINALLY_18_LABA.Main"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,14 +20,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Menu Background="AliceBlue" Grid.Row="0" Grid.ColumnSpan="2">
+        <Menu Background="AliceBlue" Grid.Row="0" Grid.ColumnSpan="2" x:Name="menu_main">
             <MenuItem Header="Menu">
-                <MenuItem Header="Store">
-                    <MenuItem Header="Add new game" Click="add_game"/>
-                    <MenuItem Header="Your profile"/>
-                    <MenuItem Header="Exit" Click="exit"/>
+                <MenuItem Header="Editor mode" IsCheckable="True" x:Name="editor_mode" Click="editor_on"/>
+                <MenuItem Header="Exit" Click="exit"/>
                 </MenuItem>
-            </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About" Click="about_page"/>
             </MenuItem>
@@ -35,10 +32,10 @@
 
         <ListView Grid.Column="0" Grid.Row="1" x:Name="navigation" SelectionChanged="selected"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin=" 5 0 5 0">
             
-            <TextBlock x:Name="selected_title" Style="{StaticResource txt_block_style}" VerticalAlignment="Center"/>
-            <TextBlock x:Name="selected_genre" Style="{StaticResource txt_block_style}" VerticalAlignment="Center"/>
+            <TextBlock x:Name="selected_title" Style="{StaticResource txt_block_style}" VerticalAlignment="Center" FontSize="18" FontWeight="DemiBold"/>
+            <TextBlock x:Name="selected_price" Style="{StaticResource txt_block_style}" VerticalAlignment="Center" FontStyle="Italic"/>
             <TextBlock x:Name="selected_description" Style="{StaticResource txt_block_style}" VerticalAlignment="Center"/>
 
         </StackPanel>
